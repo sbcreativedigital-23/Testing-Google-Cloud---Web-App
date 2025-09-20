@@ -1,0 +1,5 @@
+{
+  "name": "Women's Golf Level Analyzer",
+  "description": "An app that analyzes a woman's golf score to determine her skill level and provide improvement tips.",
+  "requestFramePermissions": []
+}

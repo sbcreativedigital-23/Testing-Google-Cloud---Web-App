@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Women's Golf Level Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.14.0"
+        }
+      }
+    </script>
+    <script type="module" src="index.tsx"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>What's Your Golfing Level?</h1>
+        <p>Enter your golf details below to get a friendly analysis of your game and personalized tips.</p>
+      </header>
+
+      <form id="score-form" aria-labelledby="form-heading">
+        <h2 id="form-heading" class="sr-only">Score Submission Form</h2>
+        <div class="input-group">
+            <label for="score-input">Average Score</label>
+            <input
+              type="number"
+              id="score-input"
+              class="form-control"
+              name="score"
+              placeholder="e.g., 110"
+              required
+              min="50"
+              max="200"
+            />
+        </div>
+        <div class="input-group">
+            <label for="frequency-input">How often do you play per month?</label>
+            <select id="frequency-input" name="frequency" class="form-control" required>
+                <option value="1-2 times">1-2 times</option>
+                <option value="3-4 times">3-4 times</option>
+                <option value="5+ times">5+ times</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="age-input">What age did you start playing?</label>
+            <input
+              type="number"
+              id="age-input"
+              class="form-control"
+              name="age"
+              placeholder="e.g., 25"
+              required
+              min="5"
+              max="99"
+            />
+        </div>
+        <div class="input-group">
+            <label for="familiarity-input">On a scale of 1-10, how familiar are you with golf?</label>
+            <div class="slider-container">
+                <input
+                  type="range"
+                  id="familiarity-input"
+                  class="form-control"
+                  name="familiarity"
+                  min="1"
+                  max="10"
+                  value="5"
+                  step="1"
+                />
+                <output for="familiarity-input" id="familiarity-output">5</output>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="best-club-input">What is your best club?</label>
+            <select id="best-club-input" name="best-club" class="form-control" required>
+                <option value="Driver">Driver</option>
+                <option value="Woods">Woods (e.g., 3-wood, 5-wood)</option>
+                <option value="Hybrids">Hybrids</option>
+                <option value="Long Irons (3-5)">Long Irons (3-5)</option>
+                <option value="Mid Irons (6-8)">Mid Irons (6-8)</option>
+                <option value="Short Irons (9-PW)">Short Irons (9-PW)</option>
+                <option value="Wedges">Wedges (e.g., Pitching, Sand)</option>
+                <option value="Putter">Putter</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="worst-club-input">What is your worst club?</label>
+            <select id="worst-club-input" name="worst-club" class="form-control" required>
+                <option value="Driver">Driver</option>
+                <option value="Woods">Woods (e.g., 3-wood, 5-wood)</option>
+                <option value="Hybrids">Hybrids</option>
+                <option value="Long Irons (3-5)">Long Irons (3-5)</option>
+                <option value="Mid Irons (6-8)">Mid Irons (6-8)</option>
+                <option value="Short Irons (9-PW)">Short Irons (9-PW)</option>
+                <option value="Wedges">Wedges (e.g., Pitching, Sand)</option>
+                <option value="Putter">Putter</option>
+            </select>
+        </div>
+        <button type="submit" id="analyze-button">
+            <span class="button-text">Analyze My Score</span>
+            <div class="spinner" role="status" aria-label="Loading"></div>
+        </button>
+      </form>
+
+      <section id="result-container" aria-live="polite"></section>
+    </main>
+  </body>
+</html>
